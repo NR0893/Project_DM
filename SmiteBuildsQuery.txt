@@ -1,0 +1,21 @@
+CREATE TABLE Gebruiker( 
+			id		int		IDENTITY(1,1)	NOT NULL,
+			username	varchar(15)	NOT NULL, 
+			CONSTRAINT	PK_User		PRIMARY KEY(id));
+CREATE TABLE GebruikerBuild(
+				id		int		IDENTITY(1,1)	NOT NULL,
+				gebruikerId	int		NOT NULL,
+				buildId		int		NOT NULL,
+				CONSTRAINT PK_GebruikerBuild	
+					PRIMARY KEY(id),
+				CONSTRAINT FK_GebruikerBuild_Gebruiker
+					FOREIGN	KEY(gebruikerId)
+					REFERENCES Gebruiker(id),
+				CONSTRAINT FK_GebruikerBuild_Build
+					FOREIGN	KEY(buildId)
+					REFERENCES Build(id));
+CREATE TABLE Build(
+			id	int	IDENTITY(1,1),
+			godId	int,
+			gameMode	varchar(10)	NOT NULL,
+			

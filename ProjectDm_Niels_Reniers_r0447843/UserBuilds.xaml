@@ -1,0 +1,64 @@
+﻿<Window x:Class="ProjectDm_Niels_Reniers_r0447843.UserBuilds"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjectDm_Niels_Reniers_r0447843"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="UserBuilds" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Header="Select Build">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <ComboBox Grid.Row="0" Grid.Column="0"
+  materialDesign:HintAssist.Hint="Search"
+  materialDesign:TextFieldAssist.HasClearButton="True"
+  IsEditable="True"
+  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+  materialDesign:TextFieldAssist.SuffixText="sw"
+  materialDesign:HintAssist.HelperText="Search Build" Margin="5"/>
+                <Button x:Name="btnNewBuild" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto" Content="New Build" Grid.Row="0" Grid.Column="1"  Margin="5" Click="btnNewBuild_Click"/>
+                <Button x:Name="btnDeleteBuild" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto" Content="Delete Build" Grid.Row="0" Grid.Column="2"  Margin="5"/>
+                <Button x:Name="btnDeleteItem" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="auto" Content="Delete Item" Grid.Row="1" Grid.Column="2"  Margin="5"/>
+                <Button x:Name="btnItems" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="auto" Content="Add Items" Grid.Row="1" Grid.Column="1" Margin="5" Click="btnItems_Click"/>
+                
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Header="Build">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock x:Name="tbBuildStats" Margin="5" Grid.Column="0"/>
+                <ListBox x:Name="lbItems" Margin="5" Grid.Column="1"/>
+
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>
