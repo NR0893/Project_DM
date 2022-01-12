@@ -13,34 +13,75 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Builds" Height="650" Width="1000" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBox x:Name="txtNewUsername" materialDesign:HintAssist.Hint="New Username" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-  VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Margin="5"/>
-        <Button x:Name="btnCreateUser" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto" Content="Create New User" Grid.Row="0" Grid.Column="1" Margin="5"/>
-        <TextBox x:Name="txtSearchUser" materialDesign:HintAssist.Hint="Search User" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-  VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" Margin="5"/>
-        <Button x:Name="btnSearchUser" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto" Content="Search" Grid.Row="1" Grid.Column="1" Margin="5"/>
-        <DataGrid x:Name="datagridUsers" AutoGenerateColumns="False" Margin="5"
-	Grid.Row="3" Grid.Column="0"  Grid.RowSpan="3" IsReadOnly="True" >
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Users}" Header="Username" />
-                <DataGridTextColumn Binding="{Binding Build}" Header="Builds" />
-            </DataGrid.Columns>
-            
-        </DataGrid>
-        <Button x:Name="btnBuilds" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto" Content="Builds" Grid.Row="3" Grid.Column="1"  Margin="5" Click="btnBuilds_Click"/>
-        <Button x:Name="btnDelete" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto" Content="Delete User" Grid.Row="4" Grid.Column="1"  Margin="5"/>
+        <GroupBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Header="Select Build">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBox x:Name="txtUsername"
+  materialDesign:HintAssist.Hint="Username"
+  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+  VerticalAlignment="Center" />
+                <ComboBox x:Name="cmbItems" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"
+  Style="{StaticResource MaterialDesignComboBox}"
+
+  materialDesign:HintAssist.HelperText="Items" Margin="5"/>
+                <Button x:Name="btnNewUser" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto" Content="Add User" Grid.Row="0" Grid.Column="1"  Margin="5" Click="btnNewUser_Click" />
+
+                <Button x:Name="btnSearch" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto" Content="Search Builds" Grid.Row="0" Grid.Column="2"  Margin="5" />
+                <Button x:Name="btnNewBuild" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto" Content="New Build" Grid.Row="1" Grid.Column="1"  Margin="5" Click="btnNewBuild_Click" />
+                <Button x:Name="btnDeleteBuild" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto" Content="Delete Build" Grid.Row="1" Grid.Column="2"  Margin="5"/>
+                <Button x:Name="btnDeleteItem" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="auto" Content="Delete Item" Grid.Row="2" Grid.Column="2"  Margin="5"/>
+                <Button x:Name="btnItems" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="auto" Content="Add Item" Grid.Row="2" Grid.Column="1" Margin="5" />
+
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Header="Build">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <DataGrid x:Name="datagridBuild" AutoGenerateColumns="False" Grid.Row="0" Grid.Column="0" 
+                  IsReadOnly="True" 
+                   Margin="5" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding username}" Header="Username"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding buildName}" Header="Build"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding godName}" Header="God"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding gameMode}" Header="Game Mode"></DataGridTextColumn>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+                <DataGrid x:Name="datagridBuildItems" AutoGenerateColumns="False" Grid.Row="0" Grid.Column="1" 
+                  IsReadOnly="True" 
+                   Margin="5" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding itemName}" Header="Items"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding cost}" Header="Cost"></DataGridTextColumn>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </Grid>
+        </GroupBox>
     </Grid>
 </Window>

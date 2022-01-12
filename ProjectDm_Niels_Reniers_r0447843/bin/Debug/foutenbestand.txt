@@ -1,0 +1,54 @@
+22:20:50 pm
+DbEntityValidationException
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at ProjectDM_DAL.DatabaseOperations.ToevoegenBuilds(Build build) in C:\project_dm\ProjectDM_DAL\DatabaseOperations.cs:line 62
+--------------------------------------------------------------------------------
+
+22:36:50 pm
+DbEntityValidationException
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at ProjectDM_DAL.DatabaseOperations.ToevoegenBuilds(Build build) in C:\project_dm\ProjectDM_DAL\DatabaseOperations.cs:line 62
+--------------------------------------------------------------------------------
+
+22:38:33 pm
+DbEntityValidationException
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at ProjectDM_DAL.DatabaseOperations.ToevoegenBuilds(Build build) in C:\project_dm\ProjectDM_DAL\DatabaseOperations.cs:line 62
+--------------------------------------------------------------------------------
+
+22:54:56 pm
+DbEntityValidationException
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at ProjectDM_DAL.DatabaseOperations.ToevoegenBuilds(Build build) in C:\project_dm\ProjectDM_DAL\DatabaseOperations.cs:line 62
+--------------------------------------------------------------------------------
+
+23:08:40 pm
+DbEntityValidationException
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at ProjectDM_DAL.DatabaseOperations.ToevoegenBuilds(Build build) in C:\project_dm\ProjectDM_DAL\DatabaseOperations.cs:line 65
+--------------------------------------------------------------------------------
+
+23:15:10 pm
+DbEntityValidationException
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at ProjectDM_DAL.DatabaseOperations.ToevoegenBuilds(Build build) in C:\project_dm\ProjectDM_DAL\DatabaseOperations.cs:line 64
+--------------------------------------------------------------------------------
+

@@ -1,0 +1,6 @@
+C:\project_dm\ProjectDM_Models\bin\Debug\ProjectDM_Models.dll
+C:\project_dm\ProjectDM_Models\bin\Debug\ProjectDM_Models.pdb
+C:\project_dm\ProjectDM_Models\obj\Debug\ProjectDM_Models.csproj.AssemblyReference.cache
+C:\project_dm\ProjectDM_Models\obj\Debug\ProjectDM_Models.csproj.CoreCompileInputs.cache
+C:\project_dm\ProjectDM_Models\obj\Debug\ProjectDM_Models.dll
+C:\project_dm\ProjectDM_Models\obj\Debug\ProjectDM_Models.pdb
