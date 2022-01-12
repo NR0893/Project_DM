@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c10074af74364bc7a887d8742c9b89f6" Name="Diagram1">
+        <EntityTypeShape EntityType="SmiteBuildModel.Ability" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmiteBuildModel.Build" Width="1.75" PointX="6" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmiteBuildModel.BuildItem" Width="1.5" PointX="8.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmiteBuildModel.God" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmiteBuildModel.GodStat" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmiteBuildModel.Item" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmiteBuildModel.ItemStat" Width="1.5" PointX="8.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmiteBuildModel.Stat" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmiteBuildModel.User" Width="1.5" PointX="3.75" PointY="8.25" IsExpanded="true" />
+        <AssociationConnector Association="SmiteBuildModel.FK_Ability_God" ManuallyRouted="false" />
+        <AssociationConnector Association="SmiteBuildModel.FK_Build_God" ManuallyRouted="false" />
+        <AssociationConnector Association="SmiteBuildModel.FK_Build_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="SmiteBuildModel.FK_BuildItem_Build" ManuallyRouted="false" />
+        <AssociationConnector Association="SmiteBuildModel.FK_BuildItem_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="SmiteBuildModel.FK_GodStat_God" ManuallyRouted="false" />
+        <AssociationConnector Association="SmiteBuildModel.FK_GodStat_Stat" ManuallyRouted="false" />
+        <AssociationConnector Association="SmiteBuildModel.FK_ItemStat_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="SmiteBuildModel.FK_ItemStat_Stat" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

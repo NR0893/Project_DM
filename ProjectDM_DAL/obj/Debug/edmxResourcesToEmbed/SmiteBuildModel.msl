@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SmiteBuildModelStoreContainer" CdmEntityContainer="SmiteBuildEntities">
+    <EntitySetMapping Name="Ability">
+      <EntityTypeMapping TypeName="SmiteBuildModel.Ability">
+        <MappingFragment StoreEntitySet="Ability">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="abiltyName" ColumnName="abiltyName" />
+          <ScalarProperty Name="abilityType" ColumnName="abilityType" />
+          <ScalarProperty Name="cooldown" ColumnName="cooldown" />
+          <ScalarProperty Name="godId" ColumnName="godId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Build">
+      <EntityTypeMapping TypeName="SmiteBuildModel.Build">
+        <MappingFragment StoreEntitySet="Build">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="godId" ColumnName="godId" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="buildName" ColumnName="buildName" />
+          <ScalarProperty Name="gameMode" ColumnName="gameMode" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BuildItem">
+      <EntityTypeMapping TypeName="SmiteBuildModel.BuildItem">
+        <MappingFragment StoreEntitySet="BuildItem">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="buildId" ColumnName="buildId" />
+          <ScalarProperty Name="itemId" ColumnName="itemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="God">
+      <EntityTypeMapping TypeName="SmiteBuildModel.God">
+        <MappingFragment StoreEntitySet="God">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="godName" ColumnName="godName" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="pantheon" ColumnName="pantheon" />
+          <ScalarProperty Name="godRole" ColumnName="godRole" />
+          <ScalarProperty Name="attackType" ColumnName="attackType" />
+          <ScalarProperty Name="powerType" ColumnName="powerType" />
+          <ScalarProperty Name="releaseDate" ColumnName="releaseDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GodStat">
+      <EntityTypeMapping TypeName="SmiteBuildModel.GodStat">
+        <MappingFragment StoreEntitySet="GodStat">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="godId" ColumnName="godId" />
+          <ScalarProperty Name="statId" ColumnName="statId" />
+          <ScalarProperty Name="statValue" ColumnName="statValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Item">
+      <EntityTypeMapping TypeName="SmiteBuildModel.Item">
+        <MappingFragment StoreEntitySet="Item">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="itemName" ColumnName="itemName" />
+          <ScalarProperty Name="tier" ColumnName="tier" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="itemType" ColumnName="itemType" />
+          <ScalarProperty Name="passive" ColumnName="passive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemStat">
+      <EntityTypeMapping TypeName="SmiteBuildModel.ItemStat">
+        <MappingFragment StoreEntitySet="ItemStat">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="itemId" ColumnName="itemId" />
+          <ScalarProperty Name="statId" ColumnName="statId" />
+          <ScalarProperty Name="statValue" ColumnName="statValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stat">
+      <EntityTypeMapping TypeName="SmiteBuildModel.Stat">
+        <MappingFragment StoreEntitySet="Stat">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="statName" ColumnName="statName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="SmiteBuildModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

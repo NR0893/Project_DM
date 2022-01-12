@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SmiteBuildModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Ability">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="abiltyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="abilityType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cooldown" Type="Double" />
+    <Property Name="godId" Type="Int32" />
+    <NavigationProperty Name="God" Relationship="Self.FK_Ability_God" FromRole="Ability" ToRole="God" />
+  </EntityType>
+  <EntityType Name="Build">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="godId" Type="Int32" />
+    <Property Name="userId" Type="Int32" />
+    <Property Name="buildName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="gameMode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="God" Relationship="Self.FK_Build_God" FromRole="Build" ToRole="God" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Build_Users" FromRole="Build" ToRole="Users" />
+    <NavigationProperty Name="BuildItem" Relationship="Self.FK_BuildItem_Build" FromRole="Build" ToRole="BuildItem" />
+  </EntityType>
+  <EntityType Name="BuildItem">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="buildId" Type="Int32" />
+    <Property Name="itemId" Type="Int32" />
+    <NavigationProperty Name="Build" Relationship="Self.FK_BuildItem_Build" FromRole="BuildItem" ToRole="Build" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_BuildItem_Item" FromRole="BuildItem" ToRole="Item" />
+  </EntityType>
+  <EntityType Name="God">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="godName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="pantheon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="godRole" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="attackType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="powerType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="releaseDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Ability" Relationship="Self.FK_Ability_God" FromRole="God" ToRole="Ability" />
+    <NavigationProperty Name="Build" Relationship="Self.FK_Build_God" FromRole="God" ToRole="Build" />
+    <NavigationProperty Name="GodStat" Relationship="Self.FK_GodStat_God" FromRole="God" ToRole="GodStat" />
+  </EntityType>
+  <EntityType Name="GodStat">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="godId" Type="Int32" />
+    <Property Name="statId" Type="Int32" />
+    <Property Name="statValue" Type="Double" Nullable="false" />
+    <NavigationProperty Name="God" Relationship="Self.FK_GodStat_God" FromRole="GodStat" ToRole="God" />
+    <NavigationProperty Name="Stat" Relationship="Self.FK_GodStat_Stat" FromRole="GodStat" ToRole="Stat" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="itemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tier" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cost" Type="Int32" Nullable="false" />
+    <Property Name="itemType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="passive" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BuildItem" Relationship="Self.FK_BuildItem_Item" FromRole="Item" ToRole="BuildItem" />
+    <NavigationProperty Name="ItemStat" Relationship="Self.FK_ItemStat_Item" FromRole="Item" ToRole="ItemStat" />
+  </EntityType>
+  <EntityType Name="ItemStat">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="itemId" Type="Int32" />
+    <Property Name="statId" Type="Int32" />
+    <Property Name="statValue" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_ItemStat_Item" FromRole="ItemStat" ToRole="Item" />
+    <NavigationProperty Name="Stat" Relationship="Self.FK_ItemStat_Stat" FromRole="ItemStat" ToRole="Stat" />
+  </EntityType>
+  <EntityType Name="Stat">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="statName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="GodStat" Relationship="Self.FK_GodStat_Stat" FromRole="Stat" ToRole="GodStat" />
+    <NavigationProperty Name="ItemStat" Relationship="Self.FK_ItemStat_Stat" FromRole="Stat" ToRole="ItemStat" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Build" Relationship="Self.FK_Build_Users" FromRole="Users" ToRole="Build" />
+  </EntityType>
+  <Association Name="FK_Ability_God">
+    <End Role="God" Type="Self.God" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Ability" Type="Self.Ability" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="God">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Ability">
+        <PropertyRef Name="godId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Build_God">
+    <End Role="God" Type="Self.God" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Build" Type="Self.Build" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="God">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Build">
+        <PropertyRef Name="godId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Build_Users">
+    <End Role="Users" Type="SmiteBuildModel.User" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Build" Type="Self.Build" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Build">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BuildItem_Build">
+    <End Role="Build" Type="Self.Build" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="BuildItem" Type="Self.BuildItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Build">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="BuildItem">
+        <PropertyRef Name="buildId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BuildItem_Item">
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="BuildItem" Type="Self.BuildItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="BuildItem">
+        <PropertyRef Name="itemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GodStat_God">
+    <End Role="God" Type="Self.God" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="GodStat" Type="Self.GodStat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="God">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="GodStat">
+        <PropertyRef Name="godId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GodStat_Stat">
+    <End Role="Stat" Type="Self.Stat" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="GodStat" Type="Self.GodStat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stat">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="GodStat">
+        <PropertyRef Name="statId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemStat_Item">
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ItemStat" Type="Self.ItemStat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ItemStat">
+        <PropertyRef Name="itemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemStat_Stat">
+    <End Role="Stat" Type="Self.Stat" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ItemStat" Type="Self.ItemStat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stat">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ItemStat">
+        <PropertyRef Name="statId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SmiteBuildEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Ability" EntityType="Self.Ability" />
+    <EntitySet Name="Build" EntityType="Self.Build" />
+    <EntitySet Name="BuildItem" EntityType="Self.BuildItem" />
+    <EntitySet Name="God" EntityType="Self.God" />
+    <EntitySet Name="GodStat" EntityType="Self.GodStat" />
+    <EntitySet Name="Item" EntityType="Self.Item" />
+    <EntitySet Name="ItemStat" EntityType="Self.ItemStat" />
+    <EntitySet Name="Stat" EntityType="Self.Stat" />
+    <EntitySet Name="Users" EntityType="SmiteBuildModel.User" />
+    <AssociationSet Name="FK_Ability_God" Association="Self.FK_Ability_God">
+      <End Role="God" EntitySet="God" />
+      <End Role="Ability" EntitySet="Ability" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Build_God" Association="Self.FK_Build_God">
+      <End Role="God" EntitySet="God" />
+      <End Role="Build" EntitySet="Build" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Build_Users" Association="Self.FK_Build_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Build" EntitySet="Build" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BuildItem_Build" Association="Self.FK_BuildItem_Build">
+      <End Role="Build" EntitySet="Build" />
+      <End Role="BuildItem" EntitySet="BuildItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BuildItem_Item" Association="Self.FK_BuildItem_Item">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="BuildItem" EntitySet="BuildItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GodStat_God" Association="Self.FK_GodStat_God">
+      <End Role="God" EntitySet="God" />
+      <End Role="GodStat" EntitySet="GodStat" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GodStat_Stat" Association="Self.FK_GodStat_Stat">
+      <End Role="Stat" EntitySet="Stat" />
+      <End Role="GodStat" EntitySet="GodStat" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemStat_Item" Association="Self.FK_ItemStat_Item">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="ItemStat" EntitySet="ItemStat" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemStat_Stat" Association="Self.FK_ItemStat_Stat">
+      <End Role="Stat" EntitySet="Stat" />
+      <End Role="ItemStat" EntitySet="ItemStat" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
