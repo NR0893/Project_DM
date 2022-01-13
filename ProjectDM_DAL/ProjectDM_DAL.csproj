@@ -124,5 +124,11 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectDM_Models\ProjectDM_Models.csproj">
+      <Project>{a9f745c0-dd3f-45ea-89ed-82cb6492fde1}</Project>
+      <Name>ProjectDM_Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

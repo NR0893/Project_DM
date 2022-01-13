@@ -18,6 +18,15 @@ namespace ProjectDM_DAL
                 return query.ToList();
             }
         }
+        public static List<User> OphalenUserviaUsername(string username)
+        {
+            using (SmiteBuildEntities entities = new SmiteBuildEntities())
+            {
+                var query = entities.Users
+                            .Where(x=>x.username==username);
+                return query.ToList();
+            }
+        }
 
         public static List<Item> OphalenItems()
         {
@@ -36,6 +45,18 @@ namespace ProjectDM_DAL
             }
         }
 
+
+        public static List<Build> OphalenBuildsViaUserID(int userId)
+        {
+            using (SmiteBuildEntities entities = new SmiteBuildEntities())
+            {
+                var query = entities.Build
+                    .Include(x=>x.User)
+                    .Include(x=>x.God)
+                    .Where(x=>x.userId==userId);
+                return query.ToList();
+            }
+        }
         public static int ToevoegenUsers(User user)
         {
             using(SmiteBuildEntities entities = new SmiteBuildEntities())
@@ -55,26 +76,41 @@ namespace ProjectDM_DAL
         }
         public static int ToevoegenBuilds(Build build)
         {
-            
+            try
+            {
                 using (SmiteBuildEntities entities = new SmiteBuildEntities())
                 {
-                    try
-                    {
-                        entities.Build.Add(build);
-                        return entities.SaveChanges();
-                    }
 
-                    catch (Exception ex)
-                    {
-                        FileOperations.FoutLoggen(ex);
-
-                        return 0;
-                    }
-
+                    entities.Build.Add(build);
+                    return entities.SaveChanges();
                 }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.FoutLoggen(ex);
 
-            
-            
+                return 0;
+            }
+                 
+        }
+        public static int VerwijderenBuilds(Build build)
+        {
+            try
+            {
+                using (SmiteBuildEntities entities = new SmiteBuildEntities())
+                {
+
+                    entities.Entry(build).State = EntityState.Deleted;
+                    return entities.SaveChanges();
+                }
+            }
+
+            catch (Exception ex)
+            {
+                FileOperations.FoutLoggen(ex);
+
+                return 0;
+            }
             
         }
     }

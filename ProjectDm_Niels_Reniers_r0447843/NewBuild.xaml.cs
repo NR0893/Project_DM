@@ -56,7 +56,7 @@ namespace ProjectDm_Niels_Reniers_r0447843
                 }
                 else
                 {
-                    MessageBox.Show($"Build van {user.username} is toegevoegd:\n{txtBuildName.Text}\n{god.godName} - {god.title}\n{cmbGameMode.SelectedItem.ToString()}\n{DateTime.Now}", "Toegevoegd!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show($"Build van {user.username} is toegevoegd:\n{txtBuildName.Text}\n{god.godName} - {god.title}\n{cmbGameMode.Text}\n{DateTime.Now}", "Toegevoegd!", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 }
             }

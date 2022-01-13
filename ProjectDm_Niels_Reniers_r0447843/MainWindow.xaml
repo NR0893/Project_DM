@@ -45,9 +45,9 @@
   materialDesign:HintAssist.HelperText="Items" Margin="5"/>
                 <Button x:Name="btnNewUser" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto" Content="Add User" Grid.Row="0" Grid.Column="1"  Margin="5" Click="btnNewUser_Click" />
 
-                <Button x:Name="btnSearch" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto" Content="Search Builds" Grid.Row="0" Grid.Column="2"  Margin="5" />
+                <Button x:Name="btnSearch" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto" Content="Search Builds" Grid.Row="0" Grid.Column="2"  Margin="5" Click="btnSearch_Click" />
                 <Button x:Name="btnNewBuild" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto" Content="New Build" Grid.Row="1" Grid.Column="1"  Margin="5" Click="btnNewBuild_Click" />
-                <Button x:Name="btnDeleteBuild" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto" Content="Delete Build" Grid.Row="1" Grid.Column="2"  Margin="5"/>
+                <Button x:Name="btnDeleteBuild" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto" Content="Delete Build" Grid.Row="1" Grid.Column="2"  Margin="5" Click="btnDeleteBuild_Click"/>
                 <Button x:Name="btnDeleteItem" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="auto" Content="Delete Item" Grid.Row="2" Grid.Column="2"  Margin="5"/>
                 <Button x:Name="btnItems" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="auto" Content="Add Item" Grid.Row="2" Grid.Column="1" Margin="5" />
 
@@ -64,9 +64,9 @@
                   IsReadOnly="True" 
                    Margin="5" >
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding username}" Header="Username"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding User.username}" Header="Username"></DataGridTextColumn>
                         <DataGridTextColumn Binding="{Binding buildName}" Header="Build"></DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding godName}" Header="God"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding God.godName}" Header="God"></DataGridTextColumn>
                         <DataGridTextColumn Binding="{Binding gameMode}" Header="Game Mode"></DataGridTextColumn>
 
                     </DataGrid.Columns>

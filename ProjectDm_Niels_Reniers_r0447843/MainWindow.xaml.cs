@@ -61,15 +61,91 @@ namespace ProjectDm_Niels_Reniers_r0447843
 
         private string Valideer(string columnName)
         {
+            List<User> users = DatabaseOperations.OphalenUsers();
             if (columnName == "userName"&& string.IsNullOrWhiteSpace(txtUsername.Text))
             {
-                return "Gelieve een username in te vullen!";
+                return "Gelieve een username in te vullen!" + Environment.NewLine;
             }
             if (columnName=="userName"&&txtUsername.Text.Count()>15)
             {
-                return "Username mag niet meer dan 15 karakters bevatten!";
+                return "Username mag niet meer dan 15 karakters bevatten!" +Environment.NewLine;
             }
+            if (columnName=="userName")
+            {
+                foreach (var user in users)
+                {
+                    if (user.username==txtUsername.Text)
+                    {
+                        return "User Bestaat al! Kies een ander naam!" + Environment.NewLine;
+                    }
+                }
+            }
+            if (columnName=="Build"&&datagridBuild.SelectedItem==null)
+            {
+                return "Selecteer de build die je wilt verwijderen!" + Environment.NewLine;
+            }
+           
+            
+          
             return "";
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtUsername.Text))
+            {
+                List<User> users = DatabaseOperations.OphalenUserviaUsername(txtUsername.Text);
+                foreach (var user in users)
+                {
+                    int userid = user.id;
+                    List<Build> builds = DatabaseOperations.OphalenBuildsViaUserID(userid);
+                    if (builds!=null)
+                    {
+                        datagridBuild.ItemsSource = builds;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Er zijn geen builds voor deze user!");
+                    }
+                }
+               
+                
+            }
+            else
+            {
+                MessageBox.Show("Je moet een username invullen!");
+            }
+        }
+
+        private void btnDeleteBuild_Click(object sender, RoutedEventArgs e)
+        {
+            string foutmeldingen = Valideer("Build");
+      
+            if (string.IsNullOrWhiteSpace(foutmeldingen))
+            {
+                Build build = datagridBuild.SelectedItem as Build;
+
+                if (MessageBox.Show($"Je staat op het punt de build: {build.buildName} te verwijderen!\nWeet je het zeker?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning)==MessageBoxResult.Yes)
+                {
+                    
+                    int.TryParse(build.userId.ToString(), out int userid);
+
+                    int ok = DatabaseOperations.VerwijderenBuilds(build);
+                    if (ok > 0)
+                    {
+                        datagridBuild.ItemsSource = DatabaseOperations.OphalenBuildsViaUserID(userid);
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Build is niet verwijderd!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show(foutmeldingen);
+            }
         }
     }
 }

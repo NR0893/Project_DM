@@ -10,3 +10,5 @@ C:\project_dm\ProjectDM_DAL\obj\Debug\ProjectDM_DAL.csproj.CoreCompileInputs.cac
 C:\project_dm\ProjectDM_DAL\obj\Debug\ProjectDM_DAL.csproj.CopyComplete
 C:\project_dm\ProjectDM_DAL\obj\Debug\ProjectDM_DAL.dll
 C:\project_dm\ProjectDM_DAL\obj\Debug\ProjectDM_DAL.pdb
+C:\project_dm\ProjectDM_DAL\bin\Debug\ProjectDM_Models.dll
+C:\project_dm\ProjectDM_DAL\bin\Debug\ProjectDM_Models.pdb
