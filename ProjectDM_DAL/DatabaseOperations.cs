@@ -41,22 +41,37 @@ namespace ProjectDM_DAL
             using (SmiteBuildEntities entities = new SmiteBuildEntities())
             {
                 var query = entities.God;
+                    
+                    
                 return query.ToList();
             }
         }
+        public static List<BuildItem> OphalenItemsViaBuildID(int buildId)
+        {
+            using (SmiteBuildEntities entities = new SmiteBuildEntities())
+            {
+                var query = entities.BuildItem
+                 
+                    .Include(x => x.Item)
+                    .Where(x => x.buildId == buildId);
+                
+                return query.ToList();
+            }
 
-
-        public static List<Build> OphalenBuildsViaUserID(int userId)
+        }
+            public static List<Build> OphalenBuildsViaUserID(int userId)
         {
             using (SmiteBuildEntities entities = new SmiteBuildEntities())
             {
                 var query = entities.Build
                     .Include(x=>x.User)
                     .Include(x=>x.God)
+                    
                     .Where(x=>x.userId==userId);
                 return query.ToList();
             }
         }
+      
         public static int ToevoegenUsers(User user)
         {
             using(SmiteBuildEntities entities = new SmiteBuildEntities())
@@ -93,6 +108,23 @@ namespace ProjectDM_DAL
             }
                  
         }
+        public static int ToevoegenBuildItem(BuildItem buildItem)
+        {
+            using (SmiteBuildEntities entities = new SmiteBuildEntities())
+            {
+                try
+                {
+                    entities.BuildItem.Add(buildItem);
+                    return entities.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    FileOperations.FoutLoggen(ex);
+                    return 0;
+                }
+
+            }
+        }
         public static int VerwijderenBuilds(Build build)
         {
             try
@@ -112,6 +144,42 @@ namespace ProjectDM_DAL
                 return 0;
             }
             
+        }
+        public static int VerwijderenBuildItems(BuildItem buildItem)
+        {
+            try
+            {
+                using (SmiteBuildEntities entities = new SmiteBuildEntities())
+                {
+
+                    entities.Entry(buildItem).State = EntityState.Deleted;
+                    return entities.SaveChanges();
+                }
+            }
+
+            catch (Exception ex)
+            {
+                FileOperations.FoutLoggen(ex);
+
+                return 0;
+            }
+
+        }
+        public static int AanpassenBuild(Build build)
+        {
+            try
+            {
+                using (SmiteBuildEntities entities = new SmiteBuildEntities())
+                {
+                    entities.Entry(build).State = EntityState.Modified;
+                    return entities.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.FoutLoggen(ex);
+                return 0;
+            }
         }
     }
 }

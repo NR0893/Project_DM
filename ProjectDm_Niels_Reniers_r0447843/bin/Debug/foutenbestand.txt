@@ -52,3 +52,203 @@ Validation failed for one or more entities. See 'EntityValidationErrors' propert
    at ProjectDM_DAL.DatabaseOperations.ToevoegenBuilds(Build build) in C:\project_dm\ProjectDM_DAL\DatabaseOperations.cs:line 64
 --------------------------------------------------------------------------------
 
+22:52:59 pm
+InvalidOperationException
+A referential integrity constraint violation occurred: The property value(s) of 'Item.id' on one end of a relationship do not match the property value(s) of 'BuildItem.itemId' on the other end.
+   at System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.CheckReferentialConstraintProperties(EntityEntry ownerEntry)
+   at System.Data.Entity.Core.Objects.DataClasses.RelationshipManager.CheckReferentialConstraintProperties(EntityEntry ownerEntry)
+   at System.Data.Entity.Core.Objects.ObjectContext.AttachSingleObject(IEntityWrapper wrappedEntity, EntitySet entitySet)
+   at System.Data.Entity.Core.Objects.ObjectContext.AttachTo(String entitySetName, Object entity)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.<>c__DisplayClass16_0.<Attach>b__0()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Attach(Object entity)
+   at System.Data.Entity.Internal.InternalEntityEntry.set_State(EntityState value)
+   at System.Data.Entity.Infrastructure.DbEntityEntry`1.set_State(EntityState value)
+   at ProjectDM_DAL.DatabaseOperations.AanpassenBuildItem(BuildItem buildItem) in C:\project_dm\ProjectDM_DAL\DatabaseOperations.cs:line 174
+--------------------------------------------------------------------------------
+
+22:53:16 pm
+InvalidOperationException
+A referential integrity constraint violation occurred: The property value(s) of 'Item.id' on one end of a relationship do not match the property value(s) of 'BuildItem.itemId' on the other end.
+   at System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.CheckReferentialConstraintProperties(EntityEntry ownerEntry)
+   at System.Data.Entity.Core.Objects.DataClasses.RelationshipManager.CheckReferentialConstraintProperties(EntityEntry ownerEntry)
+   at System.Data.Entity.Core.Objects.ObjectContext.AttachSingleObject(IEntityWrapper wrappedEntity, EntitySet entitySet)
+   at System.Data.Entity.Core.Objects.ObjectContext.AttachTo(String entitySetName, Object entity)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.<>c__DisplayClass16_0.<Attach>b__0()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Attach(Object entity)
+   at System.Data.Entity.Internal.InternalEntityEntry.set_State(EntityState value)
+   at System.Data.Entity.Infrastructure.DbEntityEntry`1.set_State(EntityState value)
+   at ProjectDM_DAL.DatabaseOperations.AanpassenBuildItem(BuildItem buildItem) in C:\project_dm\ProjectDM_DAL\DatabaseOperations.cs:line 174
+--------------------------------------------------------------------------------
+
+22:54:47 pm
+InvalidOperationException
+A referential integrity constraint violation occurred: The property value(s) of 'Item.id' on one end of a relationship do not match the property value(s) of 'BuildItem.itemId' on the other end.
+   at System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.CheckReferentialConstraintProperties(EntityEntry ownerEntry)
+   at System.Data.Entity.Core.Objects.DataClasses.RelationshipManager.CheckReferentialConstraintProperties(EntityEntry ownerEntry)
+   at System.Data.Entity.Core.Objects.ObjectContext.AttachSingleObject(IEntityWrapper wrappedEntity, EntitySet entitySet)
+   at System.Data.Entity.Core.Objects.ObjectContext.AttachTo(String entitySetName, Object entity)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.<>c__DisplayClass16_0.<Attach>b__0()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Attach(Object entity)
+   at System.Data.Entity.Internal.InternalEntityEntry.set_State(EntityState value)
+   at System.Data.Entity.Infrastructure.DbEntityEntry`1.set_State(EntityState value)
+   at ProjectDM_DAL.DatabaseOperations.AanpassenBuildItem(BuildItem buildItem) in C:\project_dm\ProjectDM_DAL\DatabaseOperations.cs:line 174
+--------------------------------------------------------------------------------
+
+23:38:34 pm
+DbUpdateException
+An error occurred while updating the entries. See the inner exception for details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at ProjectDM_DAL.DatabaseOperations.AanpassenBuild(Build build) in C:\project_dm\ProjectDM_DAL\DatabaseOperations.cs:line 175
+--------------------------------------------------------------------------------
+
+00:30:38 am
+InvalidOperationException
+Adding a relationship with an entity which is in the Deleted state is not allowed.
+   at System.Data.Entity.Core.Objects.ObjectStateManager.DetectConflicts(IList`1 entries)
+   at System.Data.Entity.Core.Objects.ObjectStateManager.DetectChanges()
+   at System.Data.Entity.Core.Objects.ObjectContext.DetectChanges()
+   at System.Data.Entity.Internal.InternalContext.DetectChanges(Boolean force)
+   at System.Data.Entity.Internal.InternalContext.GetStateEntries(Func`2 predicate)
+   at System.Data.Entity.Internal.InternalContext.GetStateEntries()
+   at System.Data.Entity.Infrastructure.DbChangeTracker.Entries()
+   at System.Data.Entity.DbContext.GetValidationErrors()
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at ProjectDM_DAL.DatabaseOperations.VerwijderenBuildItems(BuildItem buildItem) in C:\project_dm\ProjectDM_DAL\DatabaseOperations.cs:line 156
+--------------------------------------------------------------------------------
+
+00:30:50 am
+InvalidOperationException
+Adding a relationship with an entity which is in the Deleted state is not allowed.
+   at System.Data.Entity.Core.Objects.ObjectStateManager.DetectConflicts(IList`1 entries)
+   at System.Data.Entity.Core.Objects.ObjectStateManager.DetectChanges()
+   at System.Data.Entity.Core.Objects.ObjectContext.DetectChanges()
+   at System.Data.Entity.Internal.InternalContext.DetectChanges(Boolean force)
+   at System.Data.Entity.Internal.InternalContext.GetStateEntries(Func`2 predicate)
+   at System.Data.Entity.Internal.InternalContext.GetStateEntries()
+   at System.Data.Entity.Infrastructure.DbChangeTracker.Entries()
+   at System.Data.Entity.DbContext.GetValidationErrors()
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at ProjectDM_DAL.DatabaseOperations.VerwijderenBuildItems(BuildItem buildItem) in C:\project_dm\ProjectDM_DAL\DatabaseOperations.cs:line 156
+--------------------------------------------------------------------------------
+
+00:31:15 am
+InvalidOperationException
+Adding a relationship with an entity which is in the Deleted state is not allowed.
+   at System.Data.Entity.Core.Objects.ObjectStateManager.DetectConflicts(IList`1 entries)
+   at System.Data.Entity.Core.Objects.ObjectStateManager.DetectChanges()
+   at System.Data.Entity.Core.Objects.ObjectContext.DetectChanges()
+   at System.Data.Entity.Internal.InternalContext.DetectChanges(Boolean force)
+   at System.Data.Entity.Internal.InternalContext.GetStateEntries(Func`2 predicate)
+   at System.Data.Entity.Internal.InternalContext.GetStateEntries()
+   at System.Data.Entity.Infrastructure.DbChangeTracker.Entries()
+   at System.Data.Entity.DbContext.GetValidationErrors()
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at ProjectDM_DAL.DatabaseOperations.VerwijderenBuildItems(BuildItem buildItem) in C:\project_dm\ProjectDM_DAL\DatabaseOperations.cs:line 156
+--------------------------------------------------------------------------------
+
+00:31:26 am
+InvalidOperationException
+Adding a relationship with an entity which is in the Deleted state is not allowed.
+   at System.Data.Entity.Core.Objects.ObjectStateManager.DetectConflicts(IList`1 entries)
+   at System.Data.Entity.Core.Objects.ObjectStateManager.DetectChanges()
+   at System.Data.Entity.Core.Objects.ObjectContext.DetectChanges()
+   at System.Data.Entity.Internal.InternalContext.DetectChanges(Boolean force)
+   at System.Data.Entity.Internal.InternalContext.GetStateEntries(Func`2 predicate)
+   at System.Data.Entity.Internal.InternalContext.GetStateEntries()
+   at System.Data.Entity.Infrastructure.DbChangeTracker.Entries()
+   at System.Data.Entity.DbContext.GetValidationErrors()
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at ProjectDM_DAL.DatabaseOperations.VerwijderenBuildItems(BuildItem buildItem) in C:\project_dm\ProjectDM_DAL\DatabaseOperations.cs:line 156
+--------------------------------------------------------------------------------
+
+00:32:52 am
+InvalidOperationException
+Adding a relationship with an entity which is in the Deleted state is not allowed.
+   at System.Data.Entity.Core.Objects.ObjectStateManager.DetectConflicts(IList`1 entries)
+   at System.Data.Entity.Core.Objects.ObjectStateManager.DetectChanges()
+   at System.Data.Entity.Core.Objects.ObjectContext.DetectChanges()
+   at System.Data.Entity.Internal.InternalContext.DetectChanges(Boolean force)
+   at System.Data.Entity.Internal.InternalContext.GetStateEntries(Func`2 predicate)
+   at System.Data.Entity.Internal.InternalContext.GetStateEntries()
+   at System.Data.Entity.Infrastructure.DbChangeTracker.Entries()
+   at System.Data.Entity.DbContext.GetValidationErrors()
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at ProjectDM_DAL.DatabaseOperations.VerwijderenBuildItems(BuildItem buildItem) in C:\project_dm\ProjectDM_DAL\DatabaseOperations.cs:line 156
+--------------------------------------------------------------------------------
+
+00:32:59 am
+DbUpdateConcurrencyException
+Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=472540 for information on understanding and handling optimistic concurrency exceptions.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at ProjectDM_DAL.DatabaseOperations.VerwijderenBuildItems(BuildItem buildItem) in C:\project_dm\ProjectDM_DAL\DatabaseOperations.cs:line 156
+--------------------------------------------------------------------------------
+
+00:37:40 am
+DbUpdateConcurrencyException
+Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=472540 for information on understanding and handling optimistic concurrency exceptions.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at ProjectDM_DAL.DatabaseOperations.VerwijderenBuildItems(BuildItem buildItem) in C:\project_dm\ProjectDM_DAL\DatabaseOperations.cs:line 156
+--------------------------------------------------------------------------------
+
+00:38:50 am
+InvalidOperationException
+Adding a relationship with an entity which is in the Deleted state is not allowed.
+   at System.Data.Entity.Core.Objects.ObjectStateManager.DetectConflicts(IList`1 entries)
+   at System.Data.Entity.Core.Objects.ObjectStateManager.DetectChanges()
+   at System.Data.Entity.Core.Objects.ObjectContext.DetectChanges()
+   at System.Data.Entity.Internal.InternalContext.DetectChanges(Boolean force)
+   at System.Data.Entity.Internal.InternalContext.GetStateEntries(Func`2 predicate)
+   at System.Data.Entity.Internal.InternalContext.GetStateEntries()
+   at System.Data.Entity.Infrastructure.DbChangeTracker.Entries()
+   at System.Data.Entity.DbContext.GetValidationErrors()
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at ProjectDM_DAL.DatabaseOperations.VerwijderenBuildItems(BuildItem buildItem) in C:\project_dm\ProjectDM_DAL\DatabaseOperations.cs:line 156
+--------------------------------------------------------------------------------
+
+00:39:07 am
+InvalidOperationException
+Adding a relationship with an entity which is in the Deleted state is not allowed.
+   at System.Data.Entity.Core.Objects.ObjectStateManager.DetectConflicts(IList`1 entries)
+   at System.Data.Entity.Core.Objects.ObjectStateManager.DetectChanges()
+   at System.Data.Entity.Core.Objects.ObjectContext.DetectChanges()
+   at System.Data.Entity.Internal.InternalContext.DetectChanges(Boolean force)
+   at System.Data.Entity.Internal.InternalContext.GetStateEntries(Func`2 predicate)
+   at System.Data.Entity.Internal.InternalContext.GetStateEntries()
+   at System.Data.Entity.Infrastructure.DbChangeTracker.Entries()
+   at System.Data.Entity.DbContext.GetValidationErrors()
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at ProjectDM_DAL.DatabaseOperations.VerwijderenBuildItems(BuildItem buildItem) in C:\project_dm\ProjectDM_DAL\DatabaseOperations.cs:line 156
+--------------------------------------------------------------------------------
+
+00:39:15 am
+DbUpdateConcurrencyException
+Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=472540 for information on understanding and handling optimistic concurrency exceptions.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at ProjectDM_DAL.DatabaseOperations.VerwijderenBuildItems(BuildItem buildItem) in C:\project_dm\ProjectDM_DAL\DatabaseOperations.cs:line 156
+--------------------------------------------------------------------------------
+
