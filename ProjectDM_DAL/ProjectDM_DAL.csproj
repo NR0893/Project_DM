@@ -97,29 +97,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
     <EntityDeploy Include="SmiteBuildModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>SmiteBuildModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="packages.config" />
     <None Include="SmiteBuildModel.edmx.diagram">
       <DependentUpon>SmiteBuildModel.edmx</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SmiteBuildModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>SmiteBuildModel.Context.cs</LastGenOutput>
-      <DependentUpon>SmiteBuildModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="SmiteBuildModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SmiteBuildModel.edmx</DependentUpon>
-      <LastGenOutput>SmiteBuildModel.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -129,6 +115,18 @@
       <Project>{a9f745c0-dd3f-45ea-89ed-82cb6492fde1}</Project>
       <Name>ProjectDM_Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SmiteBuildModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SmiteBuildModel.edmx</DependentUpon>
+      <LastGenOutput>SmiteBuildModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SmiteBuildModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SmiteBuildModel.edmx</DependentUpon>
+      <LastGenOutput>SmiteBuildModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="SmiteBuildModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="SmiteBuildsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Ability">
     <Key>
       <PropertyRef Name="id" />
@@ -20,6 +20,8 @@
     <Property Name="buildName" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="gameMode" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="dateCreated" Type="date" Nullable="false" />
+    <Property Name="wins" Type="int" Nullable="false" />
+    <Property Name="losses" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="BuildItem">
     <Key>
@@ -211,7 +213,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="SmiteBuildModelStoreContainer">
+  <EntityContainer Name="SmiteBuildsModelStoreContainer">
     <EntitySet Name="Ability" EntityType="Self.Ability" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Build" EntityType="Self.Build" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BuildItem" EntityType="Self.BuildItem" Schema="dbo" store:Type="Tables" />

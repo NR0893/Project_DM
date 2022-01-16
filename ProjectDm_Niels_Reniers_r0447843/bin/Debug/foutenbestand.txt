@@ -252,3 +252,21 @@ Store update, insert, or delete statement affected an unexpected number of rows 
    at ProjectDM_DAL.DatabaseOperations.VerwijderenBuildItems(BuildItem buildItem) in C:\project_dm\ProjectDM_DAL\DatabaseOperations.cs:line 156
 --------------------------------------------------------------------------------
 
+10:13:10 am
+DbUpdateException
+An error occurred while updating the entries. See the inner exception for details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at ProjectDM_DAL.DatabaseOperations.ToevoegenBuilds(Build build) in C:\project_dm\ProjectDM_DAL\DatabaseOperations.cs:line 124
+--------------------------------------------------------------------------------
+
+10:18:49 am
+DbUpdateException
+An error occurred while updating the entries. See the inner exception for details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at ProjectDM_DAL.DatabaseOperations.ToevoegenBuilds(Build build) in C:\project_dm\ProjectDM_DAL\DatabaseOperations.cs:line 124
+--------------------------------------------------------------------------------
+

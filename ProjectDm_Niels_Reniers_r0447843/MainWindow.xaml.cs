@@ -26,23 +26,28 @@ namespace ProjectDm_Niels_Reniers_r0447843
         public MainWindow()
         {
             InitializeComponent();
+            this.WindowState = WindowState.Maximized;
         }
 
         private void btnNewBuild_Click(object sender, RoutedEventArgs e)
         {
             NewBuild window = new NewBuild();
             window.Show();
+           
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             cmbItems.DisplayMemberPath = "itemName";
             cmbItems.ItemsSource = DatabaseOperations.OphalenItems();
+           
+          
         }
 
         private void btnNewUser_Click(object sender, RoutedEventArgs e)
         {
             string foutmeldingen = Valideer("userName");
+            foutmeldingen += Valideer("user");
             if (string.IsNullOrWhiteSpace(foutmeldingen))
             {
                 #region Nieuwe user toevoegen
@@ -57,7 +62,7 @@ namespace ProjectDm_Niels_Reniers_r0447843
             }
             else
             {
-                MessageBox.Show(foutmeldingen);
+                MessageBox.Show(foutmeldingen,"Error",MessageBoxButton.OK,MessageBoxImage.Error);
             }
         }
 
@@ -77,6 +82,8 @@ namespace ProjectDm_Niels_Reniers_r0447843
                     if (builds!=null)
                     {
                         datagridBuild.ItemsSource = builds;
+                        Reset();
+                        txtUsername.Text = "";
                     }
                     else
                     {
@@ -104,13 +111,13 @@ namespace ProjectDm_Niels_Reniers_r0447843
                 if (MessageBox.Show($"Je staat op het punt de build: {build.buildName} te verwijderen!\nWeet je het zeker?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning)==MessageBoxResult.Yes)
                 {
                     
-                    int.TryParse(build.userId.ToString(), out int userid);
+                    int.TryParse(build.userId.ToString(), out int userid); //build.userId is van het type int?, veranderen naar type int
 
                     int ok = DatabaseOperations.VerwijderenBuilds(build);
                     if (ok > 0)
                     {
                         datagridBuild.ItemsSource = DatabaseOperations.OphalenBuildsViaUserID(userid);
-
+                        Reset();
                     }
                     else
                     {
@@ -122,7 +129,7 @@ namespace ProjectDm_Niels_Reniers_r0447843
 
             else
             {
-                MessageBox.Show(foutmeldingen);
+                MessageBox.Show(foutmeldingen,"Error",MessageBoxButton.OK,MessageBoxImage.Error);
             }
         }
 
@@ -136,16 +143,17 @@ namespace ProjectDm_Niels_Reniers_r0447843
             {
                 int buildId = build.id;
                 datagridBuildItems.ItemsSource = DatabaseOperations.OphalenItemsViaBuildID(buildId);
-
+              
+                int.TryParse(build.godId.ToString(), out int godId);
+                datagridBuildStats.ItemsSource = DatabaseOperations.OphalenGodStatsViaGodId(godId);
             }
-          
-         
         }
 
         
         private void btnItems_Click(object sender, RoutedEventArgs e)
         {
             string foutmeldingen = Valideer("Item");
+            foutmeldingen += Valideer("Build");
             if (string.IsNullOrWhiteSpace(foutmeldingen))
             {
                 #region Toevoegen items aan build
@@ -201,6 +209,7 @@ namespace ProjectDm_Niels_Reniers_r0447843
                 else
                 {
                     datagridBuildItems.ItemsSource = DatabaseOperations.OphalenItemsViaBuildID(buildId);
+                    
                 }
                 #endregion
             }
@@ -216,6 +225,7 @@ namespace ProjectDm_Niels_Reniers_r0447843
         private void btnChangeBuild_Click(object sender, RoutedEventArgs e)
         {
             string foutmeldingen = Valideer("BuildNaam");
+            foutmeldingen += Valideer("Build");
             if (string.IsNullOrWhiteSpace(foutmeldingen))
             {
                 #region Verander naam van de build
@@ -227,6 +237,7 @@ namespace ProjectDm_Niels_Reniers_r0447843
                 if (ok>0)
                 {
                     datagridBuild.ItemsSource = DatabaseOperations.OphalenBuildsViaUserID(userid);
+                    txtBuildName.Text = "";
                 }
                 else
                 {
@@ -251,7 +262,7 @@ namespace ProjectDm_Niels_Reniers_r0447843
             {
                 return "Username mag niet meer dan 15 karakters bevatten!" + Environment.NewLine;
             }
-            if (columnName == "userName")
+            if (columnName == "user")
             {
                 foreach (var user in users)
                 {
@@ -263,33 +274,123 @@ namespace ProjectDm_Niels_Reniers_r0447843
             }
             if (columnName == "Build" && datagridBuild.SelectedItem == null)
             {
-                return "Selecteer de build die je wilt verwijderen!" + Environment.NewLine;
+                return "Selecteer een Build!" + Environment.NewLine;
             }
-            if (columnName == "Item" && datagridBuild.SelectedItem == null)
-            {
-                return "Selecteer een build om een item toe te voegen!";
-            }
+           
             if (columnName == "Item" && cmbItems.SelectedItem == null)
             {
-                return "Selecteer een item om toe te voegen!";
+                return "Selecteer een item om toe te voegen!" +Environment.NewLine;
             }
            
             if (columnName == "BuildItem" && datagridBuildItems.SelectedItem == null)
             {
-                return "Selecteer een item in de build om te verwijderen!";
+                return "Selecteer een item in de build om te verwijderen!" + Environment.NewLine;
             }
-            if (columnName == "BuildNaam" && datagridBuild.SelectedItem == null)
-            {
-                return "Selecteer welke build je wilt aanpassen!";
-            }
+           
             if (columnName == "BuildNaam" && string.IsNullOrWhiteSpace(txtBuildName.Text))
             {
-                return "Vul een build naam in!";
+                return "Vul een build naam in!"+ Environment.NewLine;
             }
 
 
             return "";
         }
 
+        private void btnWin_Click(object sender, RoutedEventArgs e)
+        {
+            string foutmeldingen = Valideer("Build");
+           
+            if (string.IsNullOrWhiteSpace(foutmeldingen))
+            {
+                #region Verander aantal gewonnen van de build
+                Build build = datagridBuild.SelectedItem as Build;
+                build.wins += 1;
+                int ok = DatabaseOperations.AanpassenBuild(build);
+
+                int.TryParse(build.userId.ToString(), out int userid);
+                if (ok > 0)
+                {
+                    datagridBuild.ItemsSource = DatabaseOperations.OphalenBuildsViaUserID(userid);
+                }
+                else
+                {
+                    MessageBox.Show("Build win is niet aangepast!");
+                }
+                #endregion
+            }
+            else
+            {
+                MessageBox.Show(foutmeldingen, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void btnLoss_Click(object sender, RoutedEventArgs e)
+        {
+            string foutmeldingen = Valideer("Build");
+
+            if (string.IsNullOrWhiteSpace(foutmeldingen))
+            {
+                #region Verander aantal verloren van de build
+                Build build = datagridBuild.SelectedItem as Build;
+                build.losses += 1;
+                int ok = DatabaseOperations.AanpassenBuild(build);
+
+                int.TryParse(build.userId.ToString(), out int userid);
+                if (ok > 0)
+                {
+                    datagridBuild.ItemsSource = DatabaseOperations.OphalenBuildsViaUserID(userid);
+                }
+                else
+                {
+                    MessageBox.Show("Build loss is niet aangepast!");
+                }
+                #endregion
+            }
+            else
+            {
+                MessageBox.Show(foutmeldingen, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void Reset()
+        {
+            datagridBuildItems.ItemsSource = "";
+            datagridBuildStats.ItemsSource = "";
+        }
+
+        private void btnDeleteUser_Click(object sender, RoutedEventArgs e)
+        {
+            string foutmeldingen = Valideer("userName");
+            if (string.IsNullOrWhiteSpace(foutmeldingen))
+            {
+                #region Delete User
+                List<User> users = DatabaseOperations.OphalenUserviaUsername(txtUsername.Text);
+                foreach (var user in users)
+                {
+                    if (MessageBox.Show($"Je staat op het punt de user: {user.username} te verwijderen!\nWeet je het zeker?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    {
+                        int ok = DatabaseOperations.VerwijderenUsers(user);
+                        if (ok > 0)
+                        {
+                            datagridBuild.ItemsSource = "";
+                            Reset();
+                            txtUsername.Text = "";
+                        }
+                        else
+                        {
+                            MessageBox.Show("User is niet verwijderd!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    }
+                  
+                }
+                #endregion
+            }
+            else
+            {
+                MessageBox.Show(foutmeldingen, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+         
+        }
     }
+    
 }

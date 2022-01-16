@@ -26,6 +26,8 @@ namespace ProjectDM_DAL
         public string buildName { get; set; }
         public string gameMode { get; set; }
         public System.DateTime dateCreated { get; set; }
+        public int wins { get; set; }
+        public int losses { get; set; }
     
         public virtual God God { get; set; }
         public virtual User User { get; set; }

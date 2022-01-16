@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="SmiteBuildModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="SmiteBuildsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Ability">
     <Key>
       <PropertyRef Name="id" />
@@ -21,6 +21,8 @@
     <Property Name="buildName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="gameMode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="wins" Type="Int32" Nullable="false" />
+    <Property Name="losses" Type="Int32" Nullable="false" />
     <NavigationProperty Name="God" Relationship="Self.FK_Build_God" FromRole="Build" ToRole="God" />
     <NavigationProperty Name="User" Relationship="Self.FK_Build_Users" FromRole="Build" ToRole="Users" />
     <NavigationProperty Name="BuildItem" Relationship="Self.FK_BuildItem_Build" FromRole="Build" ToRole="BuildItem" />
@@ -132,7 +134,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Build_Users">
-    <End Role="Users" Type="SmiteBuildModel.User" Multiplicity="0..1">
+    <End Role="Users" Type="SmiteBuildsModel.User" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="Build" Type="Self.Build" Multiplicity="*" />
@@ -238,7 +240,7 @@
     <EntitySet Name="Item" EntityType="Self.Item" />
     <EntitySet Name="ItemStat" EntityType="Self.ItemStat" />
     <EntitySet Name="Stat" EntityType="Self.Stat" />
-    <EntitySet Name="Users" EntityType="SmiteBuildModel.User" />
+    <EntitySet Name="Users" EntityType="SmiteBuildsModel.User" />
     <AssociationSet Name="FK_Ability_God" Association="Self.FK_Ability_God">
       <End Role="God" EntitySet="God" />
       <End Role="Ability" EntitySet="Ability" />

@@ -50,6 +50,7 @@ namespace ProjectDm_Niels_Reniers_r0447843
                 build.userId = user.id;
                 build.dateCreated = DateTime.Today;
                 build.buildName = txtBuildName.Text;
+               
                 int ok = DatabaseOperations.ToevoegenBuilds(build);
                 if (ok == 0)
                 {
@@ -58,13 +59,14 @@ namespace ProjectDm_Niels_Reniers_r0447843
                 else
                 {
                     MessageBox.Show($"Build van {user.username} is toegevoegd:\n{txtBuildName.Text}\n{god.godName} - {god.title}\n{cmbGameMode.Text}\n{DateTime.Now}", "Toegevoegd!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    
 
                 }
                 #endregion
             }
             else
             {
-                MessageBox.Show(foutmeldingen);
+                MessageBox.Show(foutmeldingen,"Error",MessageBoxButton.OK,MessageBoxImage.Error);
             }
          
         }
