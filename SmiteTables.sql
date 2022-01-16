@@ -32,6 +32,8 @@ CREATE TABLE Build(
             buildName   varchar(50) NOT NULL,
 			gameMode	varchar(20)	NOT NULL,
             dateCreated date        NOT NULL,
+            wins        int             DEFAULT 0       NOT NULL,
+            losses      int             DEFAULT 0       NOT NULL,
             CONSTRAINT PK_Build     PRIMARY KEY(id),
             CONSTRAINT UK_Build_buildName   UNIQUE(buildName),
             CONSTRAINT FK_Build_God
